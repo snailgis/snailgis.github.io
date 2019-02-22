@@ -166,20 +166,20 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-GIS中的坐标系总结" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-GIS中的坐标系" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/02/22/GIS中的坐标系总结/">GIS中的坐标系总结</a>
+      <a class="article-title" href="/2019/02/22/GIS中的坐标系/">GIS中的坐标系</a>
     </h1>
   
 
         
-        <a href="/2019/02/22/GIS中的坐标系总结/" class="archive-article-date">
-  	<time datetime="2019-02-22T07:34:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-22</time>
+        <a href="/2019/02/22/GIS中的坐标系/" class="archive-article-date">
+  	<time datetime="2019-02-22T08:03:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-22</time>
 </a>
         
       </header>
@@ -193,7 +193,10 @@
 <p>2、“经纬度等间隔直投”的特点是相同的经纬度间隔在屏幕上的间距相等，没有复杂的坐标变换。但是该种“投影”显示方式在低纬度地区长度、角度、面积、形状变化比较小，越向高纬度，水平距离变长越大，很小的纬圈都变得和赤道一样长。同时要素自身会变形，长方形会变成上宽下窄的倒梯形。</p>
 <p>3、WGS84数据在平面上显示出来之后，也可以发布成地图服务并切片。此时切片的Tiling scheme origin通常是-400，-400（为什么？）。切片是在平面坐标系下进行，就是说WGS84数据采用“经纬度直投”到平面上的坐标原点是XOrigin=-400，YOrigin=-400。</p>
 <p>4、关于经纬度直投还没找到相关出处，先猜测一下，后期验证：经过“投影”，赤道成为X轴（向右为正），因为赤道周长为40075016.685578488，所以X轴坐标变换范围是（-20037508.3427892，20037508.3427892）；本初子午线成为Y轴（向上为正）；投影得到的四个象限对应经纬度的四个象限（-180，-90）—（180，90）；经纬度距离与平面距离之间的换算关系，赤道一周是360度，赤道周长是40075016.685578488，所以1度对应平面距离长度是111319.4907932722</p>
-<h4 id="“地图知识扫盲”思维导图"><a href="#“地图知识扫盲”思维导图" class="headerlink" title="“地图知识扫盲”思维导图"></a>“地图知识扫盲”思维导图</h4><p><img src="D:\hexo\source\_posts\img\“地图”扫盲（蜗牛V1.0）.png" alt="“地图”扫盲（蜗牛V1.0）"></p>
+<h4 id="“地图知识扫盲”思维导图"><a href="#“地图知识扫盲”思维导图" class="headerlink" title="“地图知识扫盲”思维导图"></a>“地图知识扫盲”思维导图</h4><p><img src="/2019/02/22/GIS中的坐标系/“地图”扫盲（蜗牛V1.0）.png" alt="“地图”扫盲（蜗牛V1.0）"></p>
+<p>参考文章：<a href="https://www.cnblogs.com/arxive/p/6110268.html" target="_blank" rel="noopener">https://www.cnblogs.com/arxive/p/6110268.html</a></p>
+<p>####注：发表带图片的Hexo博客时遇到的坑<br>插入图片时：图片地址为：（md文档名（自动生成文件夹的名字）\图片名.png）</p>
+<p>参考文章：<a href="https://blog.csdn.net/sugar_rainbow/article/details/57415705" target="_blank" rel="noopener">https://blog.csdn.net/sugar_rainbow/article/details/57415705</a></p>
 
       
 
@@ -207,7 +210,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">GIS，WebGIS</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">gis，坐标系</a>
         		</li>
       		
 		</ul>
@@ -217,7 +220,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/02/22/GIS中的坐标系总结/">展开全文 >></a>
+          <a class="article-more-a" href="/2019/02/22/GIS中的坐标系/">展开全文 >></a>
         </p>
       
 
@@ -473,6 +476,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
             <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
           </label>
           <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">gis，坐标系</a>
+              </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">GIS，WebGIS</a>
