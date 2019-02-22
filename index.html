@@ -47,7 +47,7 @@
 <div class="intrude-less">
 	<header id="header" class="inner">
 		<a href="/" class="profilepic">
-			<img src class="js-avatar">
+			<img src="/assets/img/head.jpg" class="js-avatar">
 		</a>
 		<hgroup>
 		  <h1 class="header-author"><a href="/">蜗牛GIS</a></h1>
@@ -61,7 +61,9 @@
 			
 				<li><a href="/">主页</a></li>
 	        
-				<li><a href="/tags/随笔/">随笔</a></li>
+				<li><a href="/archives/index.html">归档</a></li>
+	        
+				<li><a href="/archives/index.html">随笔</a></li>
 	        
 			</ul>
 		</nav>
@@ -83,11 +85,11 @@
 		<nav class="header-nav">
 			<div class="social">
 				
-					<a class="github" target="_blank" href="#" title="github"><i class="icon-github"></i></a>
+					<a class="github" target="_blank" href="https://github.com/snailgis" title="github"><i class="icon-github"></i></a>
 		        
 					<a class="weibo" target="_blank" href="#" title="weibo"><i class="icon-weibo"></i></a>
 		        
-					<a class="rss" target="_blank" href="#" title="rss"><i class="icon-rss"></i></a>
+					<a class="rss" target="_blank" href="/atom.xml" title="rss"><i class="icon-rss"></i></a>
 		        
 					<a class="zhihu" target="_blank" href="#" title="zhihu"><i class="icon-zhihu"></i></a>
 		        
@@ -107,7 +109,7 @@
 	<div class="intrude-less">
 		<header id="header" class="inner">
 			<div class="profilepic">
-				<img src class="js-avatar">
+				<img src="/assets/img/head.jpg" class="js-avatar">
 			</div>
 			<hgroup>
 			  <h1 class="header-author js-header-author">蜗牛GIS</h1>
@@ -121,16 +123,18 @@
 			
 				
 			
+				
+			
 			
 			
 			<nav class="header-nav">
 				<div class="social">
 					
-						<a class="github" target="_blank" href="#" title="github"><i class="icon-github"></i></a>
+						<a class="github" target="_blank" href="https://github.com/snailgis" title="github"><i class="icon-github"></i></a>
 			        
 						<a class="weibo" target="_blank" href="#" title="weibo"><i class="icon-weibo"></i></a>
 			        
-						<a class="rss" target="_blank" href="#" title="rss"><i class="icon-rss"></i></a>
+						<a class="rss" target="_blank" href="/atom.xml" title="rss"><i class="icon-rss"></i></a>
 			        
 						<a class="zhihu" target="_blank" href="#" title="zhihu"><i class="icon-zhihu"></i></a>
 			        
@@ -138,12 +142,14 @@
 			</nav>
 
 			<nav class="header-menu js-header-menu">
-				<ul style="width: 50%">
+				<ul style="width: 70%">
 				
 				
-					<li style="width: 50%"><a href="/">主页</a></li>
+					<li style="width: 33.333333333333336%"><a href="/">主页</a></li>
 		        
-					<li style="width: 50%"><a href="/tags/随笔/">随笔</a></li>
+					<li style="width: 33.333333333333336%"><a href="/archives/index.html">归档</a></li>
+		        
+					<li style="width: 33.333333333333336%"><a href="/archives/index.html">随笔</a></li>
 		        
 				</ul>
 			</nav>
@@ -159,6 +165,87 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-GIS中的坐标系总结" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/02/22/GIS中的坐标系总结/">GIS中的坐标系总结</a>
+    </h1>
+  
+
+        
+        <a href="/2019/02/22/GIS中的坐标系总结/" class="archive-article-date">
+  	<time datetime="2019-02-22T07:34:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-22</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="通常GIS项目涉及到的坐标系"><a href="#通常GIS项目涉及到的坐标系" class="headerlink" title="通常GIS项目涉及到的坐标系"></a>通常GIS项目涉及到的坐标系</h2><h4 id="（1）面向局部区域的大比例尺二维平面：高斯投影（横轴墨卡托）"><a href="#（1）面向局部区域的大比例尺二维平面：高斯投影（横轴墨卡托）" class="headerlink" title="（1）面向局部区域的大比例尺二维平面：高斯投影（横轴墨卡托）"></a>（1）面向局部区域的大比例尺二维平面：高斯投影（横轴墨卡托）</h4><p>说明：在市一级的小范围区域的GIS系统，比如规划局、国土局、建设局的系统，大都使用高斯投影，以便与地方地形图测绘、工程报建一直采用的坐标系相一致。高斯投影的特点是投影分带，适合小范围局部，不适合应用于大省、全国等大范围应用，若是强制按某带投影，则远离中央经线的区域的角度、距离、面积全部变形严重。</p>
+<h4 id="（2）省级、国家级范围：兰伯特投影（圆锥投影）"><a href="#（2）省级、国家级范围：兰伯特投影（圆锥投影）" class="headerlink" title="（2）省级、国家级范围：兰伯特投影（圆锥投影）"></a>（2）省级、国家级范围：兰伯特投影（圆锥投影）</h4><h4 id="（3）国际级、世界地图：经纬度等间隔直投"><a href="#（3）国际级、世界地图：经纬度等间隔直投" class="headerlink" title="（3）国际级、世界地图：经纬度等间隔直投"></a>（3）国际级、世界地图：经纬度等间隔直投</h4><p>说明：“经纬度等间隔直投”的特点是相同的经纬度间隔在屏幕上的间距相等，没有复杂的坐标变换。但是只是在低纬度地区长度、角度、面积、形状变化比较小，越向高纬度，水平距离变长越大，很小的纬圈都变得和赤道一样长。同时要素自身会变形，长方形会变成上宽下窄的倒梯形。</p>
+<h4 id="（4）互联网电子地图：Web墨卡托（墨卡托，正轴圆柱投影）"><a href="#（4）互联网电子地图：Web墨卡托（墨卡托，正轴圆柱投影）" class="headerlink" title="（4）互联网电子地图：Web墨卡托（墨卡托，正轴圆柱投影）"></a>（4）互联网电子地图：Web墨卡托（墨卡托，正轴圆柱投影）</h4><h3 id="经纬度直投与Web墨卡托区别"><a href="#经纬度直投与Web墨卡托区别" class="headerlink" title="经纬度直投与Web墨卡托区别"></a>经纬度直投与Web墨卡托区别</h3><p>分析“Web墨卡托”的投影方式，它与“原生”墨卡托的区别主要是以圆球代替椭球（这不是本文的讨论重点），他的所有经纬线也是如同“经纬度直投”一样互相垂直，高纬度地区横向也是变得很长，但他与“经纬度直投”的关键区别在于，他的纵向距离也是随着纬度增大而变长。 横向变大，同时纵向也变大，而且变化比例接近，结果就是只把一个图形“原样放大”了，而形状却没有变化。 </p>
+<h4 id="经纬度直投-重点概念"><a href="#经纬度直投-重点概念" class="headerlink" title="经纬度直投(重点概念)"></a>经纬度直投(重点概念)</h4><p>1、WGS84采用的是经纬度球面坐标系，但是也能在ArcMap（平面坐标系）中显示，原因是ArcMap对数据进行了“经纬度直投”的显示方式，即把经度当X，纬度当Y直接在笛卡尔坐标系（右手坐标系）中显示，这样直接由曲面到平面会导致地物变形。</p>
+<p>2、“经纬度等间隔直投”的特点是相同的经纬度间隔在屏幕上的间距相等，没有复杂的坐标变换。但是该种“投影”显示方式在低纬度地区长度、角度、面积、形状变化比较小，越向高纬度，水平距离变长越大，很小的纬圈都变得和赤道一样长。同时要素自身会变形，长方形会变成上宽下窄的倒梯形。</p>
+<p>3、WGS84数据在平面上显示出来之后，也可以发布成地图服务并切片。此时切片的Tiling scheme origin通常是-400，-400（为什么？）。切片是在平面坐标系下进行，就是说WGS84数据采用“经纬度直投”到平面上的坐标原点是XOrigin=-400，YOrigin=-400。</p>
+<p>4、关于经纬度直投还没找到相关出处，先猜测一下，后期验证：经过“投影”，赤道成为X轴（向右为正），因为赤道周长为40075016.685578488，所以X轴坐标变换范围是（-20037508.3427892，20037508.3427892）；本初子午线成为Y轴（向上为正）；投影得到的四个象限对应经纬度的四个象限（-180，-90）—（180，90）；经纬度距离与平面距离之间的换算关系，赤道一周是360度，赤道周长是40075016.685578488，所以1度对应平面距离长度是111319.4907932722</p>
+<h4 id="“地图知识扫盲”思维导图"><a href="#“地图知识扫盲”思维导图" class="headerlink" title="“地图知识扫盲”思维导图"></a>“地图知识扫盲”思维导图</h4><p><img src="D:\hexo\source\_posts\img\“地图”扫盲（蜗牛V1.0）.png" alt="“地图”扫盲（蜗牛V1.0）"></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">GIS，WebGIS</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/02/22/GIS中的坐标系总结/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
     <article id="post-我的第一篇Hexo-Github博客" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -243,7 +330,9 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Hexo部署技术博客参考"><a href="#Hexo部署技术博客参考" class="headerlink" title="Hexo部署技术博客参考"></a>Hexo部署技术博客参考</h3><p><a href="https://www.cnblogs.com/liziczh/category/1255281.html" target="_blank" rel="noopener">https://www.cnblogs.com/liziczh/category/1255281.html</a></p>
+<p><a href="https://www.cnblogs.com/liuxianan/p/build-blog-website-by-hexo-github.html" target="_blank" rel="noopener">https://www.cnblogs.com/liuxianan/p/build-blog-website-by-hexo-github.html</a></p>
+<h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
 <p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
 <h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
 <p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
@@ -384,6 +473,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
             <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
           </label>
           <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">GIS，WebGIS</a>
+              </li>
             
             <div class="clearfix"></div>
           </ul>
@@ -434,27 +527,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
         <ul class="search-ul">
           
             <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接1</a>
+              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>CSDN</a>
             </li>
           
             <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接2</a>
+              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>博客园</a>
             </li>
           
             <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接3</a>
+              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>掘金</a>
             </li>
           
             <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接4</a>
+              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>简书</a>
             </li>
           
             <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接5</a>
-            </li>
-          
-            <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接6</a>
+              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>Pinterest</a>
             </li>
           
         </ul>
@@ -465,7 +554,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
     
     	<section class="tools-section tools-section-me" q-show="aboutme">
   	  	
-  	  		<div class="aboutme-wrap" id="js-aboutme">很惭愧&lt;br&gt;&lt;br&gt;只做了一点微小的工作&lt;br&gt;谢谢大家</div>
+  	  		<div class="aboutme-wrap" id="js-aboutme">GISer一枚&lt;br&gt;&lt;br&gt;为GIS事业奋斗终身？&lt;br&gt;那是不可能的！</div>
   	  	
     	</section>
     
