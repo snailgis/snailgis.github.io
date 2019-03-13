@@ -166,6 +166,88 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="w-ArcGIS-API有关地图跳转的坑" class="article article-type-w  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/03/13/ArcGIS-API有关地图跳转的坑/">ArcGIS API有关地图跳转的坑</a>
+    </h1>
+  
+
+        
+        <a href="/2019/03/13/ArcGIS-API有关地图跳转的坑/" class="archive-article-date">
+  	<time datetime="2019-03-13T09:11:47.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-13</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="地图坑前端坑-ArcGIS-Api，前端跨域-回调函数"><a href="#地图坑前端坑-ArcGIS-Api，前端跨域-回调函数" class="headerlink" title="地图坑前端坑(ArcGIS Api，前端跨域/回调函数)"></a>地图坑前端坑(ArcGIS Api，前端跨域/回调函数)</h2><h3 id="地图跳转反思："><a href="#地图跳转反思：" class="headerlink" title="地图跳转反思："></a>地图跳转反思：</h3><blockquote>
+<p>功能描述：在做地图跳转功能时，事件触发时，地图飘移到指定location指定zoom。（咸阳市大棚房整治监管系统中，在列表栏中选择区域，县/镇/点位，点击触发让地图飘移到指定区域）</p>
+</blockquote>
+<blockquote>
+<p>思维的局限：前期想到当触发事件时，跳转到另外一个page，然后在这个page重新初始化map对象，指定map对象的location与zoom。这种方法的局限在于跨页面会造成资源的浪费（map第一次加载时有默认location和zoom），无形中形成了两个独立的map，会出现许多不可知问题（HomeButton已经被注册）。</p>
+</blockquote>
+<blockquote>
+<p>跳出思维圈子：一直在自己的圈子中跳不出来，后来甚至一度想在一个页面触发一次事假，初始化一个location和zoom，重新new Map，后来失败，因为当页面加载时已经初始化了一个map，不允许重新在同一个页面初始化另一个map；之后同事说map一定有定位和跳转的函数，对啊！我为什么死在了我的思维圈子里面，在每触发一次事件后在事件函数中map.centerAndZoom(point, zoom)，完全可以实现类似跳转需求，并且homebutton可以定位到页面的初始位置。</p>
+</blockquote>
+<h3 id="前端回调函数中的值怎么传出所在作用域"><a href="#前端回调函数中的值怎么传出所在作用域" class="headerlink" title="前端回调函数中的值怎么传出所在作用域"></a>前端回调函数中的值怎么传出所在作用域</h3><blockquote>
+<p>问题描述：不论是在ajax中请求数据还是其他回调函数在获取的值，怎么传出所在作用域，在其他地方调用</p>
+</blockquote>
+<p>解决方法：<a href="https://www.cnblogs.com/zuobaiquan01/p/8477322.html" target="_blank" rel="noopener">https://www.cnblogs.com/zuobaiquan01/p/8477322.html</a> （js处理异步的几种方式）</p>
+<p>（一）通过函数的方式传值</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">'.cityselect-nav #btn'</span>).on(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">          <span class="keyword">var</span> $aspan = $(<span class="keyword">this</span>).parent().find(<span class="string">'a'</span>)</span><br><span class="line">          <span class="keyword">for</span> (<span class="keyword">var</span> _i = $aspan.length - <span class="number">1</span>; _i &gt;= <span class="number">0</span>; _i--) &#123;</span><br><span class="line">              <span class="keyword">var</span> _c_id = $($aspan[_i]).attr(<span class="string">'cid'</span>)</span><br><span class="line">              <span class="keyword">if</span> (_c_id) &#123;</span><br><span class="line">                  c_id = _c_id</span><br><span class="line">                  <span class="keyword">break</span></span><br><span class="line">              &#125;</span><br><span class="line">          &#125;</span><br><span class="line">          <span class="built_in">console</span>.log(c_id);</span><br><span class="line">          initPage(c_id)</span><br><span class="line">&#125;)</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">initPage</span>(<span class="params">id</span>) </span>&#123;</span><br><span class="line">          <span class="built_in">console</span>.log(id);</span><br><span class="line">      &#125;</span><br></pre></td></tr></table></figure>
+<p>(二) 通过callback方式传值</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> fs=<span class="built_in">require</span>(<span class="string">'fs'</span>);</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getMime</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    fs.readFile(<span class="string">'mime.json'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">err,data</span>)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> data;<span class="comment">//3</span></span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(getMime());  <span class="comment">/*由于异步操作没有拿到数据，如何解决，通过异步操作*/</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> fs=<span class="built_in">require</span>(<span class="string">'fs'</span>)</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getMine</span>(<span class="params">callback</span>)</span>&#123;</span><br><span class="line">    fs.readFile(<span class="string">'mime.json'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">err,data</span>)</span>&#123;</span><br><span class="line">        callback(data)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line">getMine(<span class="function"><span class="keyword">function</span>(<span class="params">result</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(result.toString())</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<h3 id="反思：JQuery有其特别的便捷性，对它的了解和学习实在是很有必要"><a href="#反思：JQuery有其特别的便捷性，对它的了解和学习实在是很有必要" class="headerlink" title="反思：JQuery有其特别的便捷性，对它的了解和学习实在是很有必要"></a>反思：JQuery有其特别的便捷性，对它的了解和学习实在是很有必要</h3></blockquote>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/03/13/ArcGIS-API有关地图跳转的坑/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-GIS中的坐标系" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     

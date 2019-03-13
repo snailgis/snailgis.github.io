@@ -6,22 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>GIS中的坐标系 | 蜗牛GIS的博客</title>
+  <title>ArcGIS API有关地图跳转的坑 | 蜗牛GIS的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="通常GIS项目涉及到的坐标系“地图知识扫盲”思维导图 （1）面向局部区域的大比例尺二维平面：高斯投影（横轴墨卡托）说明：在市一级的小范围区域的GIS系统，比如规划局、国土局、建设局的系统，大都使用高斯投影，以便与地方地形图测绘、工程报建一直采用的坐标系相一致。高斯投影的特点是投影分带，适合小范围局部，不适合应用于大省、全国等大范围应用，若是强制按某带投影，则远离中央经线的区域的角度、距离、面积全部">
-<meta name="keywords" content="gis，坐标系">
+  <meta name="description" content="地图坑前端坑(ArcGIS Api，前端跨域/回调函数)地图跳转反思： 功能描述：在做地图跳转功能时，事件触发时，地图飘移到指定location指定zoom。（咸阳市大棚房整治监管系统中，在列表栏中选择区域，县/镇/点位，点击触发让地图飘移到指定区域）   思维的局限：前期想到当触发事件时，跳转到另外一个page，然后在这个page重新初始化map对象，指定map对象的location与zoom。">
+<meta name="keywords" content="前端,js,jquery,javascript,html5,开发者,程序猿,程序媛,极客,编程,代码,开源,IT网站,Developer,Programmer,Coder,Geek,html,css,css3,用户体验">
 <meta property="og:type" content="article">
-<meta property="og:title" content="GIS中的坐标系">
-<meta property="og:url" content="http://yoursite.com/2019/02/22/GIS中的坐标系/index.html">
+<meta property="og:title" content="ArcGIS API有关地图跳转的坑">
+<meta property="og:url" content="http://yoursite.com/2019/03/13/ArcGIS-API有关地图跳转的坑/index.html">
 <meta property="og:site_name" content="蜗牛GIS的博客">
-<meta property="og:description" content="通常GIS项目涉及到的坐标系“地图知识扫盲”思维导图 （1）面向局部区域的大比例尺二维平面：高斯投影（横轴墨卡托）说明：在市一级的小范围区域的GIS系统，比如规划局、国土局、建设局的系统，大都使用高斯投影，以便与地方地形图测绘、工程报建一直采用的坐标系相一致。高斯投影的特点是投影分带，适合小范围局部，不适合应用于大省、全国等大范围应用，若是强制按某带投影，则远离中央经线的区域的角度、距离、面积全部">
+<meta property="og:description" content="地图坑前端坑(ArcGIS Api，前端跨域/回调函数)地图跳转反思： 功能描述：在做地图跳转功能时，事件触发时，地图飘移到指定location指定zoom。（咸阳市大棚房整治监管系统中，在列表栏中选择区域，县/镇/点位，点击触发让地图飘移到指定区域）   思维的局限：前期想到当触发事件时，跳转到另外一个page，然后在这个page重新初始化map对象，指定map对象的location与zoom。">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="http://yoursite.com/2019/02/22/GIS中的坐标系/“地图”扫盲（蜗牛V1.0）.png">
-<meta property="og:updated_time" content="2019-02-22T08:29:39.345Z">
+<meta property="og:updated_time" content="2019-03-13T09:13:10.187Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="GIS中的坐标系">
-<meta name="twitter:description" content="通常GIS项目涉及到的坐标系“地图知识扫盲”思维导图 （1）面向局部区域的大比例尺二维平面：高斯投影（横轴墨卡托）说明：在市一级的小范围区域的GIS系统，比如规划局、国土局、建设局的系统，大都使用高斯投影，以便与地方地形图测绘、工程报建一直采用的坐标系相一致。高斯投影的特点是投影分带，适合小范围局部，不适合应用于大省、全国等大范围应用，若是强制按某带投影，则远离中央经线的区域的角度、距离、面积全部">
-<meta name="twitter:image" content="http://yoursite.com/2019/02/22/GIS中的坐标系/“地图”扫盲（蜗牛V1.0）.png">
+<meta name="twitter:title" content="ArcGIS API有关地图跳转的坑">
+<meta name="twitter:description" content="地图坑前端坑(ArcGIS Api，前端跨域/回调函数)地图跳转反思： 功能描述：在做地图跳转功能时，事件触发时，地图飘移到指定location指定zoom。（咸阳市大棚房整治监管系统中，在列表栏中选择区域，县/镇/点位，点击触发让地图飘移到指定区域）   思维的局限：前期想到当触发事件时，跳转到另外一个page，然后在这个page重新初始化map对象，指定map对象的location与zoom。">
   
     <link rel="alternative" href="/atom.xml" title="蜗牛GIS的博客" type="application/atom+xml">
   
@@ -167,38 +165,46 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-GIS中的坐标系" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="w-ArcGIS-API有关地图跳转的坑" class="article article-type-w " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      GIS中的坐标系
+      ArcGIS API有关地图跳转的坑
     </h1>
   
 
         
-        <a href="/2019/02/22/GIS中的坐标系/" class="archive-article-date">
-  	<time datetime="2019-02-22T08:03:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-22</time>
+        <a href="/2019/03/13/ArcGIS-API有关地图跳转的坑/" class="archive-article-date">
+  	<time datetime="2019-03-13T09:11:47.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-13</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="通常GIS项目涉及到的坐标系"><a href="#通常GIS项目涉及到的坐标系" class="headerlink" title="通常GIS项目涉及到的坐标系"></a>通常GIS项目涉及到的坐标系</h2><h4 id="“地图知识扫盲”思维导图"><a href="#“地图知识扫盲”思维导图" class="headerlink" title="“地图知识扫盲”思维导图"></a>“地图知识扫盲”思维导图</h4><p><img src="/2019/02/22/GIS中的坐标系/“地图”扫盲（蜗牛V1.0）.png" alt="“地图”扫盲（蜗牛V1.0）"></p>
-<h4 id="（1）面向局部区域的大比例尺二维平面：高斯投影（横轴墨卡托）"><a href="#（1）面向局部区域的大比例尺二维平面：高斯投影（横轴墨卡托）" class="headerlink" title="（1）面向局部区域的大比例尺二维平面：高斯投影（横轴墨卡托）"></a>（1）面向局部区域的大比例尺二维平面：高斯投影（横轴墨卡托）</h4><p>说明：在市一级的小范围区域的GIS系统，比如规划局、国土局、建设局的系统，大都使用高斯投影，以便与地方地形图测绘、工程报建一直采用的坐标系相一致。高斯投影的特点是投影分带，适合小范围局部，不适合应用于大省、全国等大范围应用，若是强制按某带投影，则远离中央经线的区域的角度、距离、面积全部变形严重。</p>
-<h4 id="（2）省级、国家级范围：兰伯特投影（圆锥投影）"><a href="#（2）省级、国家级范围：兰伯特投影（圆锥投影）" class="headerlink" title="（2）省级、国家级范围：兰伯特投影（圆锥投影）"></a>（2）省级、国家级范围：兰伯特投影（圆锥投影）</h4><h4 id="（3）国际级、世界地图：经纬度等间隔直投"><a href="#（3）国际级、世界地图：经纬度等间隔直投" class="headerlink" title="（3）国际级、世界地图：经纬度等间隔直投"></a>（3）国际级、世界地图：经纬度等间隔直投</h4><p>说明：“经纬度等间隔直投”的特点是相同的经纬度间隔在屏幕上的间距相等，没有复杂的坐标变换。但是只是在低纬度地区长度、角度、面积、形状变化比较小，越向高纬度，水平距离变长越大，很小的纬圈都变得和赤道一样长。同时要素自身会变形，长方形会变成上宽下窄的倒梯形。</p>
-<h4 id="（4）互联网电子地图：Web墨卡托（墨卡托，正轴圆柱投影）"><a href="#（4）互联网电子地图：Web墨卡托（墨卡托，正轴圆柱投影）" class="headerlink" title="（4）互联网电子地图：Web墨卡托（墨卡托，正轴圆柱投影）"></a>（4）互联网电子地图：Web墨卡托（墨卡托，正轴圆柱投影）</h4><h3 id="经纬度直投与Web墨卡托区别"><a href="#经纬度直投与Web墨卡托区别" class="headerlink" title="经纬度直投与Web墨卡托区别"></a>经纬度直投与Web墨卡托区别</h3><p>分析“Web墨卡托”的投影方式，它与“原生”墨卡托的区别主要是以圆球代替椭球（这不是本文的讨论重点），他的所有经纬线也是如同“经纬度直投”一样互相垂直，高纬度地区横向也是变得很长，但他与“经纬度直投”的关键区别在于，他的纵向距离也是随着纬度增大而变长。 横向变大，同时纵向也变大，而且变化比例接近，结果就是只把一个图形“原样放大”了，而形状却没有变化。 </p>
-<h4 id="经纬度直投-重点概念"><a href="#经纬度直投-重点概念" class="headerlink" title="经纬度直投(重点概念)"></a>经纬度直投(重点概念)</h4><p>1、WGS84采用的是经纬度球面坐标系，但是也能在ArcMap（平面坐标系）中显示，原因是ArcMap对数据进行了“经纬度直投”的显示方式，即把经度当X，纬度当Y直接在笛卡尔坐标系（右手坐标系）中显示，这样直接由曲面到平面会导致地物变形。</p>
-<p>2、“经纬度等间隔直投”的特点是相同的经纬度间隔在屏幕上的间距相等，没有复杂的坐标变换。但是该种“投影”显示方式在低纬度地区长度、角度、面积、形状变化比较小，越向高纬度，水平距离变长越大，很小的纬圈都变得和赤道一样长。同时要素自身会变形，长方形会变成上宽下窄的倒梯形。</p>
-<p>3、WGS84数据在平面上显示出来之后，也可以发布成地图服务并切片。此时切片的Tiling scheme origin通常是-400，-400（为什么？）。切片是在平面坐标系下进行，就是说WGS84数据采用“经纬度直投”到平面上的坐标原点是XOrigin=-400，YOrigin=-400。</p>
-<p>4、关于经纬度直投还没找到相关出处，先猜测一下，后期验证：经过“投影”，赤道成为X轴（向右为正），因为赤道周长为40075016.685578488，所以X轴坐标变换范围是（-20037508.3427892，20037508.3427892）；本初子午线成为Y轴（向上为正）；投影得到的四个象限对应经纬度的四个象限（-180，-90）—（180，90）；经纬度距离与平面距离之间的换算关系，赤道一周是360度，赤道周长是40075016.685578488，所以1度对应平面距离长度是111319.4907932722</p>
-<p>参考文章：<a href="https://www.cnblogs.com/arxive/p/6110268.html" target="_blank" rel="noopener">https://www.cnblogs.com/arxive/p/6110268.html</a></p>
-<p>####注：发表带图片的Hexo博客时遇到的坑</p>
-<p>插入图片时：图片地址为：（md文档名（自动生成文件夹的名字）\图片名.png）</p>
-<p>参考文章：<a href="https://blog.csdn.net/sugar_rainbow/article/details/57415705" target="_blank" rel="noopener">https://blog.csdn.net/sugar_rainbow/article/details/57415705</a></p>
+        <h2 id="地图坑前端坑-ArcGIS-Api，前端跨域-回调函数"><a href="#地图坑前端坑-ArcGIS-Api，前端跨域-回调函数" class="headerlink" title="地图坑前端坑(ArcGIS Api，前端跨域/回调函数)"></a>地图坑前端坑(ArcGIS Api，前端跨域/回调函数)</h2><h3 id="地图跳转反思："><a href="#地图跳转反思：" class="headerlink" title="地图跳转反思："></a>地图跳转反思：</h3><blockquote>
+<p>功能描述：在做地图跳转功能时，事件触发时，地图飘移到指定location指定zoom。（咸阳市大棚房整治监管系统中，在列表栏中选择区域，县/镇/点位，点击触发让地图飘移到指定区域）</p>
+</blockquote>
+<blockquote>
+<p>思维的局限：前期想到当触发事件时，跳转到另外一个page，然后在这个page重新初始化map对象，指定map对象的location与zoom。这种方法的局限在于跨页面会造成资源的浪费（map第一次加载时有默认location和zoom），无形中形成了两个独立的map，会出现许多不可知问题（HomeButton已经被注册）。</p>
+</blockquote>
+<blockquote>
+<p>跳出思维圈子：一直在自己的圈子中跳不出来，后来甚至一度想在一个页面触发一次事假，初始化一个location和zoom，重新new Map，后来失败，因为当页面加载时已经初始化了一个map，不允许重新在同一个页面初始化另一个map；之后同事说map一定有定位和跳转的函数，对啊！我为什么死在了我的思维圈子里面，在每触发一次事件后在事件函数中map.centerAndZoom(point, zoom)，完全可以实现类似跳转需求，并且homebutton可以定位到页面的初始位置。</p>
+</blockquote>
+<h3 id="前端回调函数中的值怎么传出所在作用域"><a href="#前端回调函数中的值怎么传出所在作用域" class="headerlink" title="前端回调函数中的值怎么传出所在作用域"></a>前端回调函数中的值怎么传出所在作用域</h3><blockquote>
+<p>问题描述：不论是在ajax中请求数据还是其他回调函数在获取的值，怎么传出所在作用域，在其他地方调用</p>
+</blockquote>
+<p>解决方法：<a href="https://www.cnblogs.com/zuobaiquan01/p/8477322.html" target="_blank" rel="noopener">https://www.cnblogs.com/zuobaiquan01/p/8477322.html</a> （js处理异步的几种方式）</p>
+<p>（一）通过函数的方式传值</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">'.cityselect-nav #btn'</span>).on(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">          <span class="keyword">var</span> $aspan = $(<span class="keyword">this</span>).parent().find(<span class="string">'a'</span>)</span><br><span class="line">          <span class="keyword">for</span> (<span class="keyword">var</span> _i = $aspan.length - <span class="number">1</span>; _i &gt;= <span class="number">0</span>; _i--) &#123;</span><br><span class="line">              <span class="keyword">var</span> _c_id = $($aspan[_i]).attr(<span class="string">'cid'</span>)</span><br><span class="line">              <span class="keyword">if</span> (_c_id) &#123;</span><br><span class="line">                  c_id = _c_id</span><br><span class="line">                  <span class="keyword">break</span></span><br><span class="line">              &#125;</span><br><span class="line">          &#125;</span><br><span class="line">          <span class="built_in">console</span>.log(c_id);</span><br><span class="line">          initPage(c_id)</span><br><span class="line">&#125;)</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">initPage</span>(<span class="params">id</span>) </span>&#123;</span><br><span class="line">          <span class="built_in">console</span>.log(id);</span><br><span class="line">      &#125;</span><br></pre></td></tr></table></figure>
+<p>(二) 通过callback方式传值</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> fs=<span class="built_in">require</span>(<span class="string">'fs'</span>);</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getMime</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    fs.readFile(<span class="string">'mime.json'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">err,data</span>)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> data;<span class="comment">//3</span></span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(getMime());  <span class="comment">/*由于异步操作没有拿到数据，如何解决，通过异步操作*/</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> fs=<span class="built_in">require</span>(<span class="string">'fs'</span>)</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getMine</span>(<span class="params">callback</span>)</span>&#123;</span><br><span class="line">    fs.readFile(<span class="string">'mime.json'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">err,data</span>)</span>&#123;</span><br><span class="line">        callback(data)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line">getMine(<span class="function"><span class="keyword">function</span>(<span class="params">result</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(result.toString())</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<h3 id="反思：JQuery有其特别的便捷性，对它的了解和学习实在是很有必要"><a href="#反思：JQuery有其特别的便捷性，对它的了解和学习实在是很有必要" class="headerlink" title="反思：JQuery有其特别的便捷性，对它的了解和学习实在是很有必要"></a>反思：JQuery有其特别的便捷性，对它的了解和学习实在是很有必要</h3></blockquote>
 
       
 
@@ -228,17 +234,6 @@
     <div class="article-info article-info-index">
       
       
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">gis，坐标系</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
       
 
       
@@ -289,7 +284,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/02/22/GIS中的坐标系/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/03/13/ArcGIS-API有关地图跳转的坑/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -303,18 +298,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/03/13/ArcGIS-API有关地图跳转的坑/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          ArcGIS API有关地图跳转的坑
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/02/22/我的第一篇Hexo-Github博客/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">我的第二篇Hexo+Github博客</div>
+    <a href="/2019/02/22/GIS中的坐标系/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">GIS中的坐标系</div>
       <i class="icon-circle-right"></i>
     </a>
   
