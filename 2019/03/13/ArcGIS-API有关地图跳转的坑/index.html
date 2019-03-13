@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>ArcGIS API有关地图跳转的坑 | 蜗牛GIS的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="地图坑前端坑(ArcGIS Api，前端跨域/回调函数)地图跳转反思： 功能描述：在做地图跳转功能时，事件触发时，地图飘移到指定location指定zoom。（咸阳市大棚房整治监管系统中，在列表栏中选择区域，县/镇/点位，点击触发让地图飘移到指定区域）  &amp;lt;! - - more - - &amp;gt;  思维的局限：前期想到当触发事件时，跳转到另外一个page，然后在这个page重新初始化map对">
+  <meta name="description" content="地图坑前端坑(ArcGIS Api，前端跨域/回调函数)地图跳转反思： 功能描述：在做地图跳转功能时，事件触发时，地图飘移到指定location指定zoom。（咸阳市大棚房整治监管系统中，在列表栏中选择区域，县/镇/点位，点击触发让地图飘移到指定区域）">
 <meta name="keywords" content="前端,js,jquery,javascript,html5,开发者,程序猿,程序媛,极客,编程,代码,开源,IT网站,Developer,Programmer,Coder,Geek,html,css,css3,用户体验">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ArcGIS API有关地图跳转的坑">
 <meta property="og:url" content="http://yoursite.com/2019/03/13/ArcGIS-API有关地图跳转的坑/index.html">
 <meta property="og:site_name" content="蜗牛GIS的博客">
-<meta property="og:description" content="地图坑前端坑(ArcGIS Api，前端跨域/回调函数)地图跳转反思： 功能描述：在做地图跳转功能时，事件触发时，地图飘移到指定location指定zoom。（咸阳市大棚房整治监管系统中，在列表栏中选择区域，县/镇/点位，点击触发让地图飘移到指定区域）  &amp;lt;! - - more - - &amp;gt;  思维的局限：前期想到当触发事件时，跳转到另外一个page，然后在这个page重新初始化map对">
+<meta property="og:description" content="地图坑前端坑(ArcGIS Api，前端跨域/回调函数)地图跳转反思： 功能描述：在做地图跳转功能时，事件触发时，地图飘移到指定location指定zoom。（咸阳市大棚房整治监管系统中，在列表栏中选择区域，县/镇/点位，点击触发让地图飘移到指定区域）">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-03-13T11:24:05.642Z">
+<meta property="og:updated_time" content="2019-03-13T11:28:34.511Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ArcGIS API有关地图跳转的坑">
-<meta name="twitter:description" content="地图坑前端坑(ArcGIS Api，前端跨域/回调函数)地图跳转反思： 功能描述：在做地图跳转功能时，事件触发时，地图飘移到指定location指定zoom。（咸阳市大棚房整治监管系统中，在列表栏中选择区域，县/镇/点位，点击触发让地图飘移到指定区域）  &amp;lt;! - - more - - &amp;gt;  思维的局限：前期想到当触发事件时，跳转到另外一个page，然后在这个page重新初始化map对">
+<meta name="twitter:description" content="地图坑前端坑(ArcGIS Api，前端跨域/回调函数)地图跳转反思： 功能描述：在做地图跳转功能时，事件触发时，地图飘移到指定location指定zoom。（咸阳市大棚房整治监管系统中，在列表栏中选择区域，县/镇/点位，点击触发让地图飘移到指定区域）">
   
     <link rel="alternative" href="/atom.xml" title="蜗牛GIS的博客" type="application/atom+xml">
   
@@ -188,7 +188,7 @@
         <h2 id="地图坑前端坑-ArcGIS-Api，前端跨域-回调函数"><a href="#地图坑前端坑-ArcGIS-Api，前端跨域-回调函数" class="headerlink" title="地图坑前端坑(ArcGIS Api，前端跨域/回调函数)"></a>地图坑前端坑(ArcGIS Api，前端跨域/回调函数)</h2><h3 id="地图跳转反思："><a href="#地图跳转反思：" class="headerlink" title="地图跳转反思："></a>地图跳转反思：</h3><blockquote>
 <p>功能描述：在做地图跳转功能时，事件触发时，地图飘移到指定location指定zoom。（咸阳市大棚房整治监管系统中，在列表栏中选择区域，县/镇/点位，点击触发让地图飘移到指定区域）</p>
 </blockquote>
-<p>&lt;! - - more - - &gt;</p>
+<a id="more"></a>
 <blockquote>
 <p>思维的局限：前期想到当触发事件时，跳转到另外一个page，然后在这个page重新初始化map对象，指定map对象的location与zoom。这种方法的局限在于跨页面会造成资源的浪费（map第一次加载时有默认location和zoom），无形中形成了两个独立的map，会出现许多不可知问题（HomeButton已经被注册）。</p>
 </blockquote>
