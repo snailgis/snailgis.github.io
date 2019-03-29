@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="蜗牛GIS的博客">
 <meta property="og:description" content="地图坑前端坑(ArcGIS Api，前端跨域/回调函数)地图跳转反思： 功能描述：在做地图跳转功能时，事件触发时，地图飘移到指定location指定zoom。（咸阳市大棚房整治监管系统中，在列表栏中选择区域，县/镇/点位，点击触发让地图飘移到指定区域）">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-03-13T11:30:03.696Z">
+<meta property="og:updated_time" content="2019-03-29T08:14:45.108Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ArcGIS API有关地图跳转的坑">
 <meta name="twitter:description" content="地图坑前端坑(ArcGIS Api，前端跨域/回调函数)地图跳转反思： 功能描述：在做地图跳转功能时，事件触发时，地图飘移到指定location指定zoom。（咸阳市大棚房整治监管系统中，在列表栏中选择区域，县/镇/点位，点击触发让地图飘移到指定区域）">
@@ -204,8 +204,6 @@
 <p>(二) 通过callback方式传值</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> fs=<span class="built_in">require</span>(<span class="string">'fs'</span>);</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getMime</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    fs.readFile(<span class="string">'mime.json'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">err,data</span>)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> data;<span class="comment">//3</span></span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(getMime());  <span class="comment">/*由于异步操作没有拿到数据，如何解决，通过异步操作*/</span></span><br></pre></td></tr></table></figure>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> fs=<span class="built_in">require</span>(<span class="string">'fs'</span>)</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getMine</span>(<span class="params">callback</span>)</span>&#123;</span><br><span class="line">    fs.readFile(<span class="string">'mime.json'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">err,data</span>)</span>&#123;</span><br><span class="line">        callback(data)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line">getMine(<span class="function"><span class="keyword">function</span>(<span class="params">result</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(result.toString())</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<blockquote>
-<h3 id="反思：JQuery有其特别的便捷性，对它的了解和学习实在是很有必要"><a href="#反思：JQuery有其特别的便捷性，对它的了解和学习实在是很有必要" class="headerlink" title="反思：JQuery有其特别的便捷性，对它的了解和学习实在是很有必要"></a>反思：JQuery有其特别的便捷性，对它的了解和学习实在是很有必要</h3></blockquote>
 
       
 
@@ -437,15 +435,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">gis，坐标系</a>
+                <a href="javascript:void(0)" class="js-tag color3">gis 坐标系</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">随笔</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">gis 坐标系</a>
               </li>
             
             <div class="clearfix"></div>
