@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>上传本地代码到github | 蜗牛GIS的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Quick Start（1）建立git仓储cd到你的本地项目根目录下，执行git命令 1$ git init （2）将项目的所有文件添加到仓库中1$ git add . （3）将add的文件commit到仓库1$ git commit -m &quot;注释语句&quot;">
-<meta name="keywords" content="github">
+  <meta name="description" content="前要：本地创建项目，建立github仓储，并将代码保存到GitHub上，这个过程需要经过以下几个步骤：  （1）建立git仓储cd到你的本地项目根目录下，执行git命令">
+<meta name="keywords" content="github git">
 <meta property="og:type" content="article">
 <meta property="og:title" content="上传本地代码到github">
 <meta property="og:url" content="http://yoursite.com/2019/04/25/上传本地代码到github/index.html">
 <meta property="og:site_name" content="蜗牛GIS的博客">
-<meta property="og:description" content="Quick Start（1）建立git仓储cd到你的本地项目根目录下，执行git命令 1$ git init （2）将项目的所有文件添加到仓库中1$ git add . （3）将add的文件commit到仓库1$ git commit -m &quot;注释语句&quot;">
+<meta property="og:description" content="前要：本地创建项目，建立github仓储，并将代码保存到GitHub上，这个过程需要经过以下几个步骤：  （1）建立git仓储cd到你的本地项目根目录下，执行git命令">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-04-25T14:58:44.441Z">
+<meta property="og:updated_time" content="2019-07-04T11:22:48.617Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="上传本地代码到github">
-<meta name="twitter:description" content="Quick Start（1）建立git仓储cd到你的本地项目根目录下，执行git命令 1$ git init （2）将项目的所有文件添加到仓库中1$ git add . （3）将add的文件commit到仓库1$ git commit -m &quot;注释语句&quot;">
+<meta name="twitter:description" content="前要：本地创建项目，建立github仓储，并将代码保存到GitHub上，这个过程需要经过以下几个步骤：  （1）建立git仓储cd到你的本地项目根目录下，执行git命令">
   
     <link rel="alternative" href="/atom.xml" title="蜗牛GIS的博客" type="application/atom+xml">
   
@@ -191,11 +191,15 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="（1）建立git仓储"><a href="#（1）建立git仓储" class="headerlink" title="（1）建立git仓储"></a>（1）建立git仓储</h3><p>cd到你的本地项目根目录下，执行git命令</p>
+        <blockquote>
+<p>前要：本地创建项目，建立github仓储，并将代码保存到GitHub上，这个过程需要经过以下几个步骤：</p>
+</blockquote>
+<h3 id="（1）建立git仓储"><a href="#（1）建立git仓储" class="headerlink" title="（1）建立git仓储"></a>（1）建立git仓储</h3><p>cd到你的本地项目根目录下，执行git命令</p>
+<a id="more"></a>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git init</span><br></pre></td></tr></table></figure>
 <h3 id="（2）将项目的所有文件添加到仓库中"><a href="#（2）将项目的所有文件添加到仓库中" class="headerlink" title="（2）将项目的所有文件添加到仓库中"></a>（2）将项目的所有文件添加到仓库中</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git add .</span><br></pre></td></tr></table></figure>
 <h3 id="（3）将add的文件commit到仓库"><a href="#（3）将add的文件commit到仓库" class="headerlink" title="（3）将add的文件commit到仓库"></a>（3）将add的文件commit到仓库</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git commit -m <span class="string">"注释语句"</span></span><br></pre></td></tr></table></figure>
-<a id="more"></a>
+<!-- more -->
 <h3 id="（4）去github上创建自己的Repository，获得仓库的https地址"><a href="#（4）去github上创建自己的Repository，获得仓库的https地址" class="headerlink" title="（4）去github上创建自己的Repository，获得仓库的https地址"></a>（4）去github上创建自己的Repository，获得仓库的https地址</h3><h3 id="（5）将本地的仓库关联到github上"><a href="#（5）将本地的仓库关联到github上" class="headerlink" title="（5）将本地的仓库关联到github上"></a>（5）将本地的仓库关联到github上</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git remote add origin https://github.com/snailgis/<span class="comment">######</span></span><br></pre></td></tr></table></figure>
 <h3 id="（6）上传github之前，先pull一下"><a href="#（6）上传github之前，先pull一下" class="headerlink" title="（6）上传github之前，先pull一下"></a>（6）上传github之前，先pull一下</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git pull origin master</span><br></pre></td></tr></table></figure>
 <h3 id="（7）上传代码到github远程仓库"><a href="#（7）上传代码到github远程仓库" class="headerlink" title="（7）上传代码到github远程仓库"></a>（7）上传代码到github远程仓库</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git push -u origin master</span><br></pre></td></tr></table></figure>
@@ -244,7 +248,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">github</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">github git</a>
         		</li>
       		
 		</ul>
@@ -314,7 +318,7 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/07/04/git-merge-branch/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2019/04/28/git-merge-branch/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
@@ -455,15 +459,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">github</a>
+                <a href="javascript:void(0)" class="js-tag color1">git github</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">github git</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">随笔</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
             
             <div class="clearfix"></div>
